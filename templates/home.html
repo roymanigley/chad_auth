@@ -1,0 +1,89 @@
+<html>
+    <head>
+
+        <style>
+            body {
+                font-family: monospace, sans-serif, verdana;
+                background-color: teal;
+                color: white;
+                font-size: 2em;
+            }
+
+            input, button {
+                font-family: monospace;
+                font-size: 1em;
+            }
+
+            .flex-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-flow: column;
+            }
+            .flex-item {
+                margin-top: 2em;
+            }
+
+            .label {
+                display:block;
+                margin-bottom: 0.5em;
+            }
+
+            #login_btn {
+                padding: 1em;
+                border: none;
+            }
+            #login_btn:disabled {
+                color: white;
+                cursor: not-allowed;
+            }
+
+            .header > details > summary {
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+            a {
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+
+    <div id="header">
+        <details id="app-title">
+            <summary style="font-size: 2em; font-weight: bold"></summary>
+            for the average OIDC enjoyer 😎
+            <ul>
+                <li><a href="/oidc/docs" target="_blank">OIDC - API</a></li>
+                <li><a href="/api/docs" target="_blank">Management - API</a></li>
+                <li><a href="/admin" target="_blank">Django Admin Panel</a></li>
+                <li><a href="https://github.com/roymanigley/chad_auth" target="_blank">GitHub</a></li>
+            </ul>
+        </details>
+    </div>
+    <div id="content">
+        <div class="flex-wrapper">
+            <div class="flex-item">
+                <h2 id="welcome-message"></h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        const appTitle = 'Chad Auth'
+        const appTitleElement = document.getElementById('app-title')
+        let counter = 0
+        setInterval(() => {
+            if (counter < appTitle.length) appTitleElement.childNodes[1].append(appTitle[counter++]);
+            if (counter === appTitle.length) appTitleElement.setAttribute('open', '')
+          }, 100);
+
+        const welcomeMessage = 'Welcome!'
+        const welcomeMessageElement = document.getElementById('welcome-message')
+        setInterval(() => {
+            if (counter >= appTitle.length && counter < welcomeMessage.length + appTitle.length) welcomeMessageElement.append(welcomeMessage[counter++ - appTitle.length])
+          }, 200);
+    </script>
+    </body>
+</html>
